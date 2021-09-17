@@ -1,4 +1,4 @@
-Here we have raspi codes
+Here we have raspi codes (brain for zumzum)
 
 Need library first:
 
