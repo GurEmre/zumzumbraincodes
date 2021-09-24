@@ -5,6 +5,7 @@ from smbus import SMBus
 addr = 0x8 # bus address
 bus = SMBus(1) # indicates /dev/ic2-1
 numb = 1
+import msvcrt
 #print ("Enter Motor value")
 
 while numb == 1:
@@ -15,6 +16,7 @@ while numb == 1:
         numb=3
     while numb == 3:
         c = raw_input('Press s or n to continue:')
+        input_char = msvcrt.getch()
         if c.upper() == 'S':
             print 'YES'
         ledstate = int(input(">>>>   "))
