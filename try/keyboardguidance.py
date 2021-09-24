@@ -33,3 +33,15 @@ while numb == 1:
             numb=1
         else:
             print "You said nothing!"
+            #ledstate = int(input(">>>>   "))
+            ledstate = int(0)
+            bytelist= struct.pack('=h',ledstate)
+            intlist=[]
+            for byteval in bytelist:
+                intval=ord(byteval)
+                intlist.append(intval)
+            try:
+                bus.write_block_data(addr, register,intlist)
+            except IOError:
+                print('IOerr')
+            numb=1
