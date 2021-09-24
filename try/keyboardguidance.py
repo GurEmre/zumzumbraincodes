@@ -1,5 +1,6 @@
 import struct
 import smbus
+import sys, select
 bus=smbus.SMBus(1)
 from smbus import SMBus
 addr = 0x8 # bus address
@@ -14,11 +15,12 @@ while numb == 1:
        # register=0
         numb=3
     while numb == 3:
-        with keyboard.Events() as events:
-            # Block for as much as possible
-            event = events.get(1e6)
-            if event.key == keyboard.KeyCode.from_char('s'):
-                print("YES")
+        print "You have ten seconds to answer!"
+        i, o, e = select.select( [sys.stdin], [], [], 3 )
+        if (i):
+            print "You said", sys.stdin.readline().strip()
+        else:
+            print "You said nothing!"
         ledstate = int(input(">>>>   "))
         #ledstate = int(8888888)
         bytelist= struct.pack('=h',ledstate)
