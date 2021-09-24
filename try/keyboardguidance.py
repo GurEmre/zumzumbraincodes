@@ -18,7 +18,7 @@ while numb == 1:
         print "You have ten seconds to answer!"
         w, a, d = select.select( [sys.stdin], [], [], 3 )
         if (w):
-            print "You said", sys.stdin.readline().strip()
+            #print "You said", sys.stdin.readline().strip()
             ledstate = int(100) #int(input(">>>>   "))
         else:
             print "You said nothing!"
