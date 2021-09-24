@@ -7,7 +7,7 @@ addr = 0x8 # bus address
 bus = SMBus(1) # indicates /dev/ic2-1
 numb = 1
 #print ("Enter Motor value")
-from pynput import keyboard
+
 while numb == 1:
     numb=2
     while numb == 2:
