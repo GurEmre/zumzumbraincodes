@@ -16,21 +16,20 @@ while numb == 1:
         numb=3
     while numb == 3:
         print "You have ten seconds to answer!"
-        w, a, d = select.select( [sys.stdin], [], [], 3 )
-        if (w):
-            #print "You said", sys.stdin.readline().strip()
-            ledstate = int(100) #int(input(">>>>   "))
+        i, o, e = select.select( [sys.stdin], [], [], 3 )
+        if (i):
+            print "You said", sys.stdin.readline().strip()
+            #ledstate = int(input(">>>>   "))
+            ledstate = int(100)
+            bytelist= struct.pack('=h',ledstate)
+            intlist=[]
+            for byteval in bytelist:
+                intval=ord(byteval)
+                intlist.append(intval)
+            try:
+                bus.write_block_data(addr, register,intlist)
+            except IOError:
+                print('IOerr')
+            numb=1
         else:
             print "You said nothing!"
-        
-        #ledstate = int(8888888)
-        bytelist= struct.pack('=h',ledstate)
-        intlist=[]
-        for byteval in bytelist:
-            intval=ord(byteval)
-            intlist.append(intval)
-        try:
-            bus.write_block_data(addr, register,intlist)
-        except IOError:
-            print('IOerr')
-        numb=1
