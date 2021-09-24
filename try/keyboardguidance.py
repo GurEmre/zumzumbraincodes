@@ -19,8 +19,7 @@ while numb == 1:
         w, a, d = select.select( [sys.stdin], [], [], 3 )
         if (w):
             print "You said", sys.stdin.readline().strip()
-            ledstate = 100 #int(input(">>>>   "))
-        
+            ledstate = int(100) #int(input(">>>>   "))
         else:
             print "You said nothing!"
         
