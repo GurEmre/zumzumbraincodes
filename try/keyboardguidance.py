@@ -16,12 +16,14 @@ while numb == 1:
         numb=3
     while numb == 3:
         print "You have ten seconds to answer!"
-        i, o, e = select.select( [sys.stdin], [], [], 3 )
-        if (i):
+        w, a, d = select.select( [sys.stdin], [], [], 3 )
+        if (w):
             print "You said", sys.stdin.readline().strip()
+            ledstate = 100 #int(input(">>>>   "))
+        
         else:
             print "You said nothing!"
-        ledstate = int(input(">>>>   "))
+        
         #ledstate = int(8888888)
         bytelist= struct.pack('=h',ledstate)
         intlist=[]
