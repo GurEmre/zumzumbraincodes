@@ -34,4 +34,4 @@ print('Moving servo on channel 0, press Ctrl-C to quit...')
 while True:
     servonu = int(input(">>>>   "))
     pwmdata = int(input(">>>>   "))
-    pwm.set_pwm(servonu, 0, pwmdata)
+    pwm.set_pwm(servonu, 0, pwmdata) 
