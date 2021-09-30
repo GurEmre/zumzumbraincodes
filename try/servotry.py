@@ -32,20 +32,20 @@ pwm.set_pwm_freq(60)
 
 print('Moving servo on channel 0, press Ctrl-C to quit...')
 while True:
-    status = str(input(">>>>   "))
-    if(status == 'hold'):
+    status = int(input(">>>>   "))
+    if(status == 0):
         pwm.set_pwm(0, 0, 600)
         pwm.set_pwm(1, 0, 100)
         pwm.set_pwm(2, 0, 600)
-    if(status == 'up'):
+    if(status == 1):
         pwm.set_pwm(0, 0, 600)
         pwm.set_pwm(1, 0, 100)
         pwm.set_pwm(2, 0, 400)
-    if(status == 'down'):
+    if(status == 2):
         pwm.set_pwm(0, 0, 600)
         pwm.set_pwm(1, 0, 100)
         pwm.set_pwm(2, 0, 600)
-    if(status == 'rel'):
+    if(status == 3):
         pwm.set_pwm(0, 0, 100)
         pwm.set_pwm(1, 0, 600)
         pwm.set_pwm(2, 0, 600)
