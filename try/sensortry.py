@@ -1,4 +1,4 @@
-
+import time
 import struct
 import smbus
 bus=smbus.SMBus(1)
@@ -28,4 +28,13 @@ def parse_data(address, register, num_bytes):
             return None
         return val
 # bus.write_byte(8, 255)
-print(parse_data(8, 255, 2))
+ while(1):
+    print ("\n255:\n")
+    print(parse_data(8, 255, 2))
+    print ("254:\n")
+    print(parse_data(8, 254, 2))
+    print ("253:\n")
+    print(parse_data(8, 253, 2))
+    print ("252:\n")
+    print(parse_data(8, 252, 2))
+    time.sleep(1)
