@@ -29,7 +29,8 @@ def parse_data(address, register, num_bytes):
         return val
 # bus.write_byte(8, 255)
 while(1):
-     print ("\n255:\n")
+     print ("\n-----------------------------------------------------\n")
+     print ("255:\n")
      print(parse_data(8, 255, 2))
      print ("254:\n")
      print(parse_data(8, 254, 2))
