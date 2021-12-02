@@ -66,7 +66,7 @@ def start(args):
     while True:
         ret, frame = cap.read()
         print(frame.shape[:2])
-                start_time = time.time()
+        start_time = time.time()
         aruco_ids = get_aruco(frame)
         print(aruco_ids)
         print(time.time() - start_time)
