@@ -55,7 +55,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     cv2.rectangle(image, (0, 0), (200, 200), (220, 240, 230), -1)
 
     corners, ids, rejectedImgPoints = aruco.detectMarkers(image, aruco_dict)
-    image = aruco.drawDetectedMarkers(image, corners) # marker körvonalak
+    image = aruco.drawDetectedMarkers(image, corners) # marker krvonalak
 
       
     rvec, tvec ,_ = aruco.estimatePoseSingleMarkers(corners, 0.05, mtx, distor)
