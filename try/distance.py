@@ -69,7 +69,6 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
  #           rr, thet = ra.rArea(corners)
             aruco.drawAxis(image, mtx, distor, rvec[0], tvec[0], 0.06) # np.array([0.0, 0.0, 0.0])
             #print(f, "\t", end = " ")
-            #print("%d táv: %.2f" % (i, math.sqrt(rvec[i][0][0]**2 + rvec[i][0][1]**2 + rvec[i][0][2]**2)))
             #cv2.putText(image, image.shape())
             #cv2.putText(image, "%.1f cm" % ((20000 / rr**0.5) * 0.116 - 2.08), (0, 230), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (244, 244, 244))
             cv2.putText(image, "%.1f cm -- %.0f deg" % ((tvec[0][0][2] * 100), (rvec[0][0][2] / math.pi * 180)), (0, 230), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (244, 244, 244))
