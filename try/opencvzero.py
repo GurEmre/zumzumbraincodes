@@ -69,7 +69,7 @@ def start(args):
         start_time = time.time()
         aruco_ids = get_aruco(frame)
         print(aruco_ids)
-        if (aruco_ids != 0):
+        if (aruco_ids != []):
             print("ONWARD!!!")
         print(time.time() - start_time)
         time.sleep(1)
