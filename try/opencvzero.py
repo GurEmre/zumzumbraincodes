@@ -50,7 +50,7 @@ def get_aruco(frame):
                 # only ids larger than 10 are robots
                 continue
             tvecs.append([tvec[0], tvec[1], aruco_id[0]])
-            print(tvec[2])
+            print(tvecs)
             aruco_ids.append(aruco_id)
             # get image with axes drawn on aruco
 
