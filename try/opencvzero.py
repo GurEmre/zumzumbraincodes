@@ -71,7 +71,7 @@ def start(args):
         print(aruco_ids)
         if (aruco_ids != []):
             print("distance:")
-            print(tvecs(2))
+            print(tvecs)
         print(time.time() - start_time)
         time.sleep(1)
     cap.release()
@@ -84,7 +84,7 @@ def start(args):
     # # closing all open windows
     # cv2.destroyAllWindows()
 
-    print(tvecs)
+    #print(tvecs)
     # for tvec in tvecs:
     #     if tvec[2] == 43:
     #         center = tvec[0:2]
