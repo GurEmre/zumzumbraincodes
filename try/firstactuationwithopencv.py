@@ -77,7 +77,7 @@ def start(args):
             print(tvecs(2))
             #
         print(time.time() - start_time)
-        #time.sleep(1)
+        time.sleep(1)
     cap.release()
     # frame = cv2.imread('test.jpeg')
     # gray, tvecs = get_aruco(frame)
