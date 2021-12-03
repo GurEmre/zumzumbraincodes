@@ -49,7 +49,7 @@ def get_aruco(frame):
             if aruco_id < 10:
                 # only ids larger than 10 are robots
                 continue
-            tvecs.append([tvec[0], tvec[1], aruco_id[0]])
+            tvecs.append([tvec[0], tvec[1], tvec[2], aruco_id[0]])
             print("distance:")
             print(tvec[2])
             aruco_ids.append(aruco_id)
@@ -60,7 +60,7 @@ def get_aruco(frame):
 
         # publish img with all aruco axes drawn
         # cv2.circle(gray,(int(1920/2)+ 100,int(1080/2)+100), 300, (0,0,255), 1)
-    return aruco_ids
+    return tvecs,aruco_ids
 
 def start(args):
 
@@ -69,10 +69,11 @@ def start(args):
         ret, frame = cap.read()
         print(frame.shape[:2])
         start_time = time.time()
-        aruco_ids = get_aruco(frame)
+        tvecs,aruco_ids = get_aruco(frame)
         print(aruco_ids)
         if (aruco_ids != []):
             print("ONWARD!!!")
+            print(tvecs())
         print(time.time() - start_time)
         time.sleep(1)
     cap.release()
