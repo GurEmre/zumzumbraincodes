@@ -128,6 +128,8 @@ def start(args):
                             except IOError:
                                 print('IOerr')
                             numb=1
+                            ledstate=0
+                            register=0
                 else:
                     print('Moving servo on channel 0, press Ctrl-C to quit...')
                     while True:
