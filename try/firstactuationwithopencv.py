@@ -99,7 +99,7 @@ def start(args):
             for tvec in tvecs:
                 print("distance:")
                 print(tvec[2])
-                if (tvec[2]>0.9):
+                if (tvec[2]>0.09):
                     import struct
                     from smbus import SMBus
                     addr = 0x8 # bus address
