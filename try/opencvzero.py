@@ -71,7 +71,7 @@ def start(args):
         print(aruco_ids)
         if (aruco_ids != []):
             print("distance:")
-            print(tvecs)
+            print(tvecs(2))
         print(time.time() - start_time)
         time.sleep(1)
     cap.release()
