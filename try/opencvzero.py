@@ -70,8 +70,10 @@ def start(args):
         tvecs,aruco_ids = get_aruco(frame)
         print(aruco_ids)
         if (aruco_ids != []):
-            print("distance:")
-            print(tvecs[0,2])
+            print(tvecs)
+            for tvec in tvecs:
+                print("distance:")
+                print(tvec[2])
         print(time.time() - start_time)
         time.sleep(1)
     cap.release()
