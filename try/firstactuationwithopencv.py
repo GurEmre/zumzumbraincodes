@@ -1,3 +1,4 @@
+from __future__ import division
 import os
 import cv2.aruco as aruco
 import numpy as np
@@ -6,8 +7,6 @@ import sys
 import time
 import struct
 import smbus
-from __future__ import division
-import time
 
 import Adafruit_PCA9685
 
