@@ -130,6 +130,7 @@ def start(args):
                             numb=1
                             ledstate=0
                             register=0
+                            break
                 else:
                     print('Moving servo on channel 0, press Ctrl-C to quit...')
                     while True:
