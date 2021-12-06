@@ -137,23 +137,10 @@ def start(args):
                 else:
                     print('Moving servo on channel 0, press Ctrl-C to quit...')
                     while True:
-                        status = int(input(">>>>   "))
-                        if(status == 0):
-                            pwm.set_pwm(0, 0, 600)
-                            pwm.set_pwm(1, 0, 100)
-                            pwm.set_pwm(2, 0, 600)
-                        if(status == 1):
-                            pwm.set_pwm(0, 0, 600)
-                            pwm.set_pwm(1, 0, 100)
-                            pwm.set_pwm(2, 0, 400)
-                        if(status == 2):
-                            pwm.set_pwm(0, 0, 600)
-                            pwm.set_pwm(1, 0, 100)
-                            pwm.set_pwm(2, 0, 600)
-                        if(status == 3):
-                            pwm.set_pwm(0, 0, 100)
-                            pwm.set_pwm(1, 0, 600)
-                            pwm.set_pwm(2, 0, 600)        
+                        status0 = int(input(">>>>   "))
+                        status1 = int(input(">>>>   "))
+                        status2 = int(input(">>>>   "))
+                        pwm.set_pwm(status0, status1, status2)
         print(time.time() - start_time)
         time.sleep(1)
     cap.release()
