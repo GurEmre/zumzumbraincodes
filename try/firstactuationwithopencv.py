@@ -112,11 +112,11 @@ def start(args):
                     while numb == 1:
                         numb=2
                         while numb == 2:
-                            register = int(input(0))
+                            register = 0
                         # register=0
                             numb=3
                         while numb == 3:
-                            ledstate = int(input(100))
+                            ledstate = 100
                             #ledstate = int(8888888)
                             bytelist= struct.pack('=h',ledstate)
                             intlist=[]
