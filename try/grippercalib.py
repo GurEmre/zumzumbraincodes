@@ -29,7 +29,7 @@ def set_servo_pulse(channel, pulse):
     pulse //= pulse_length
     pwm.set_pwm(channel, 0, pulse)
 
-pwm.set_pwm_freq(60)
+pwm.set_pwm_freq(50)
 
 print('Moving servo on channel 0, press Ctrl-C to quit...')
 while True:
