@@ -13,7 +13,7 @@ import Adafruit_PCA9685
 pwm = Adafruit_PCA9685.PCA9685()
 
 # Alternatively specify a different address and/or bus:
-#pwm = Adafruit_PCA9685.PCA9685(address=0x41, busnum=2)
+#pwm = Adafruit_PCA9685.PCA9685(address=0x41, busnum=2) try
 
 servo_min = 150  # Change to find suitable servo pos.
 servo_max = 400  
