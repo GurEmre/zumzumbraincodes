@@ -72,7 +72,13 @@ def get_aruco(frame):
     return tvecs,aruco_ids
 
 def start(args):
-
+    bytelist= struct.pack('=h',0)
+    intlist=[]
+    for byteval in bytelist:
+        intval=ord(byteval)
+        intlist.append(intval)
+    bus.write_block_data(addr, 0,intlist)
+    bus.write_block_data(addr, 1,intlist)
     cap = cv2.VideoCapture(0)
     while True:
         ret, frame = cap.read()
@@ -125,12 +131,14 @@ def start(args):
                             intlist.append(intval)
                         bus.write_block_data(addr, 0,intlist)
                         bus.write_block_data(addr, 1,intlist)
+                        time.sleep(1)
                         bytelist= struct.pack('=h',100)
                         intlist=[]
                         for byteval in bytelist:
                             intval=ord(byteval)
                             intlist.append(intval)
                         bus.write_block_data(addr, 0,intlist)
+                        time.sleep(1)
                         bytelist= struct.pack('=h',0)
                         intlist=[]
                         for byteval in bytelist:
