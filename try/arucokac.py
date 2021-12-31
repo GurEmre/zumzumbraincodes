@@ -120,7 +120,6 @@ def start(args):
                         time.sleep(1)
                         bytelistr= struct.pack('=h',0)
                         bytelistl= struct.pack('=h',100)
-                        time.sleep(1)
                         intlistr=[]
                         intlistl=[]
                         for byteval in bytelistr:
@@ -131,6 +130,13 @@ def start(args):
                             intlistl.append(intval)
                         bus.write_block_data(addr, 0,intlistr)
                         bus.write_block_data(addr, 1,intlistl)
+                        bytelist= struct.pack('=h',0)
+                        intlist=[]
+                        for byteval in bytelist:
+                            intval=ord(byteval)
+                            intlist.append(intval)
+                        bus.write_block_data(addr, 0,intlist)
+                        bus.write_block_data(addr, 1,intlist)
         print(time.time() - start_time)
         #time.sleep(1)
     cap.release()
