@@ -90,7 +90,7 @@ def start(args):
                     pwm.set_pwm(0,0,200)
                     pwm.set_pwm(2,0,500)
                     pwm.set_pwm(1,0,300)
-                    bytelist= struct.pack('=h',100)
+                    bytelist= struct.pack('=h',-100)
                     intlist=[]
                     for byteval in bytelist:
                         intval=ord(byteval)
@@ -99,18 +99,6 @@ def start(args):
                     bus.write_block_data(addr, 1,intlist)
                     if (tvec[2] < 0.108):
                         #arms closed
-                        pwm.set_pwm(2,0,200)
-                        pwm.set_pwm(0,0,500)
-                        pwm.set_pwm(1,0,400)
-                        time.sleep(1)
-                        bytelist= struct.pack('=h',-100)
-                        intlist=[]
-                        for byteval in bytelist:
-                            intval=ord(byteval)
-                            intlist.append(intval)
-                        bus.write_block_data(addr, 0,intlist)
-                        bus.write_block_data(addr, 1,intlist)
-                        time.sleep(1)
                         bytelist= struct.pack('=h',0)
                         intlist=[]
                         for byteval in bytelist:
@@ -118,8 +106,34 @@ def start(args):
                             intlist.append(intval)
                         bus.write_block_data(addr, 0,intlist)
                         bus.write_block_data(addr, 1,intlist)
+                        pwm.set_pwm(2,0,200)
+                        pwm.set_pwm(0,0,500)
+                        pwm.set_pwm(1,0,400)
+                        time.sleep(1)
+                        bytelist= struct.pack('=h',100)
+                        intlist=[]
+                        for byteval in bytelist:
+                            intval=ord(byteval)
+                            intlist.append(intval)
+                        bus.write_block_data(addr, 0,intlist)
+                        bus.write_block_data(addr, 1,intlist)
+                        time.sleep(1)
+                        bytelistr= struct.pack('=h',0)
+                        bytelistl= struct.pack('=h',100)
+                        time.sleep(1)
+                        intlistr=[]
+                        intlistl=[]
+                        for byteval in bytelistr:
+                            intval=ord(byteval)
+                            intlistr.append(intval)
+                        for byteval in bytelistl:
+                            intval=ord(byteval)
+                            intlistl.append(intval)
+                        bus.write_block_data(addr, 0,intlistr)
+                        bus.write_block_data(addr, 1,intlistl)
         print(time.time() - start_time)
         #time.sleep(1)
+    def 
     cap.release()
     # frame = cv2.imread('test.jpeg')
     # gray, tvecs = get_aruco(frame)
