@@ -1,6 +1,6 @@
 
 
-from __future__ import division
+# from __future__ import division
 import time
 
 import Adafruit_PCA9685
@@ -16,18 +16,18 @@ pwm = Adafruit_PCA9685.PCA9685()
 # Alternatively specify a different address and/or bus:
 #pwm = Adafruit_PCA9685.PCA9685(address=0x41, busnum=2)
 
-servo_min = 150  # Change to find suitable servo pos.
-servo_max = 400  
+# servo_min = 150  # Change to find suitable servo pos.
+# servo_max = 400  
 
-def set_servo_pulse(channel, pulse):
-    pulse_length = 1000000    # 1,000,000 us per second
-    pulse_length //= 50       # 60 Hz
-    print('{0}us per period'.format(pulse_length))
-    pulse_length //= 4096     # 12 bits of resolution
-    print('{0}us per bit'.format(pulse_length))
-    pulse *= 1000
-    pulse //= pulse_length
-    pwm.set_pwm(channel, 0, pulse)
+# def set_servo_pulse(channel, pulse):
+#     pulse_length = 1000000    # 1,000,000 us per second
+#     pulse_length //= 50       # 60 Hz
+#     print('{0}us per period'.format(pulse_length))
+#     pulse_length //= 4096     # 12 bits of resolution
+#     print('{0}us per bit'.format(pulse_length))
+#     pulse *= 1000
+#     pulse //= pulse_length
+#     pwm.set_pwm(channel, 0, pulse)
 
 pwm.set_pwm_freq(50)
 

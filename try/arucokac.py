@@ -1,36 +1,13 @@
-from __future__ import division
 import os
 import cv2.aruco as aruco
 import numpy as np
 import cv2
 import sys
 import time
-import struct
-import smbus
-
+import time
 import Adafruit_PCA9685
-
-
-# Uncomment to enable debug output.
-#import logging
-#logging.basicConfig(level=logging.DEBUG)
-
-# Initialise the PCA9685 using the default address (0x40).
 pwm = Adafruit_PCA9685.PCA9685()
-def set_servo_pulse(channel, pulse):
-    pulse_length = 1000000    # 1,000,000 us per second
-    pulse_length //= 60       # 60 Hz
-    print('{0}us per period'.format(pulse_length))
-    pulse_length //= 4096     # 12 bits of resolution
-    print('{0}us per bit'.format(pulse_length))
-    pulse *= 1000
-    pulse //= pulse_length
-    pwm.set_pwm(channel, 0, pulse)
-
-pwm.set_pwm_freq(60)
-bus=smbus.SMBus(1)
-# import util_funcs as uf
-
+pwm.set_pwm_freq(50)
 
 def get_aruco(frame):
     """
@@ -99,48 +76,10 @@ def start(args):
             for tvec in tvecs:
                 print("distance:")
                 print(tvec[2])
-                if (tvec[2]>0.09):
-                    import struct
-                    from smbus import SMBus
-                    addr = 0x8 # bus address
-                    bus = SMBus(1) # indicates /dev/ic2-1
-                    bus=smbus.SMBus(1)
-
-                    numb = 1
-                    #print ("Enter Motor value")
-
-                    while numb == 1:
-                        numb=2
-                        while numb == 2:
-                            register = 0
-                        # register=0
-                            numb=3
-                        while numb == 3:
-                            ledstate = 100
-                            #ledstate = int(8888888)
-                            bytelist= struct.pack('=h',ledstate)
-                            intlist=[]
-                            for byteval in bytelist:
-                                intval=ord(byteval)
-                                intlist.append(intval)
-                            try:
-                                bus.write_block_data(addr, register,intlist)
-                            except IOError:
-                                print('IOerr')
-                            numb=1
-                            ledstate=0
-                            register=0
-                            break
-                        break
-                    break
-                
-                else:
-                    print('Moving servo on channel 0, press Ctrl-C to quit...')
-                    while True:
-                        status0 = int(input(">>>>   "))
-                        status1 = int(input(">>>>   "))
-                        status2 = int(input(">>>>   "))
-                        pwm.set_pwm(status0, status1, status2)
+                if (tvec[2] != 0):
+                    pwm.set_pwm(0,0,500)
+                    pwm.set_pwm(2,0,400)
+                    pwm.set_pwm(1,0,200)
         print(time.time() - start_time)
         time.sleep(1)
     cap.release()
@@ -153,7 +92,7 @@ def start(args):
     # # closing all open windows
     # cv2.destroyAllWindows()
 
-    print(tvecs)
+    #print(tvecs)
     # for tvec in tvecs:
     #     if tvec[2] == 43:
     #         center = tvec[0:2]
