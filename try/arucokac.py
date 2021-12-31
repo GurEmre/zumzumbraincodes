@@ -86,17 +86,40 @@ def start(args):
                 print("distance:")
                 print(tvec[2])
                 if (tvec[2] != 0):
-                    pwm.set_pwm(0,0,500)
-                    pwm.set_pwm(2,0,200)
-                    pwm.set_pwm(1,0,400)
+                    #move open arms if aruco detected
+                    pwm.set_pwm(0,0,200)
+                    pwm.set_pwm(2,0,500)
+                    pwm.set_pwm(1,0,300)
                     bytelist= struct.pack('=h',100)
                     intlist=[]
                     for byteval in bytelist:
                         intval=ord(byteval)
                         intlist.append(intval)
                     bus.write_block_data(addr, 0,intlist)
+                    bus.write_block_data(addr, 1,intlist)
+                    if (tvec[2] < 0.108):
+                        #arms closed
+                        pwm.set_pwm(2,0,200)
+                        pwm.set_pwm(0,0,500)
+                        pwm.set_pwm(1,0,400)
+                        time.sleep(1)
+                        bytelist= struct.pack('=h',-100)
+                        intlist=[]
+                        for byteval in bytelist:
+                            intval=ord(byteval)
+                            intlist.append(intval)
+                        bus.write_block_data(addr, 0,intlist)
+                        bus.write_block_data(addr, 1,intlist)
+                        time.sleep(1)
+                        bytelist= struct.pack('=h',0)
+                        intlist=[]
+                        for byteval in bytelist:
+                            intval=ord(byteval)
+                            intlist.append(intval)
+                        bus.write_block_data(addr, 0,intlist)
+                        bus.write_block_data(addr, 1,intlist)
         print(time.time() - start_time)
-        time.sleep(1)
+        #time.sleep(1)
     cap.release()
     # frame = cv2.imread('test.jpeg')
     # gray, tvecs = get_aruco(frame)
