@@ -118,18 +118,19 @@ def start(args):
                         bus.write_block_data(addr, 0,intlist)
                         bus.write_block_data(addr, 1,intlist)
                         time.sleep(1)
-                        bytelistr= struct.pack('=h',0)
-                        bytelistl= struct.pack('=h',100)
-                        intlistr=[]
-                        intlistl=[]
-                        for bytevalr in bytelistr:
-                            intvalr=ord(bytevalr)
-                            intlistr.append(intvalr)
-                        for bytevall in bytelistl:
-                            intvall=ord(bytevall)
-                            intlistl.append(intvall)
-                        bus.write_block_data(addr, 0,intlistr)
-                        bus.write_block_data(addr, 1,intlistl)
+                        bytelist= struct.pack('=h',0)
+                        intlist=[]
+                        for byteval in bytelist:
+                            intval=ord(byteval)
+                            intlist.append(intval)
+                        bus.write_block_data(addr, 0,intlist)
+                        bus.write_block_data(addr, 1,intlist)
+                        bytelist= struct.pack('=h',100)
+                        intlist=[]
+                        for byteval in bytelist:
+                            intval=ord(byteval)
+                            intlist.append(intval)
+                        bus.write_block_data(addr, 0,intlist)
                         bytelist= struct.pack('=h',0)
                         intlist=[]
                         for byteval in bytelist:
