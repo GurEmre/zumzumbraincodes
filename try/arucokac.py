@@ -6,6 +6,15 @@ import sys
 import time
 import time
 import Adafruit_PCA9685
+import struct
+import smbus
+import struct
+from smbus import SMBus
+bus=smbus.SMBus(1)
+
+addr = 0x8 # bus address
+bus = SMBus(1) # indicates /dev/ic2-1
+bus=smbus.SMBus(1)
 pwm = Adafruit_PCA9685.PCA9685()
 pwm.set_pwm_freq(50)
 
@@ -78,8 +87,9 @@ def start(args):
                 print(tvec[2])
                 if (tvec[2] != 0):
                     pwm.set_pwm(0,0,500)
-                    pwm.set_pwm(2,0,400)
-                    pwm.set_pwm(1,0,200)
+                    pwm.set_pwm(2,0,200)
+                    pwm.set_pwm(1,0,400)
+                    bus.write_block_data(addr, 0,100)
         print(time.time() - start_time)
         time.sleep(1)
     cap.release()
