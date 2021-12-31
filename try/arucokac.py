@@ -89,7 +89,12 @@ def start(args):
                     pwm.set_pwm(0,0,500)
                     pwm.set_pwm(2,0,200)
                     pwm.set_pwm(1,0,400)
-                    bus.write_block_data(addr, 0,100)
+                    bytelist= struct.pack('=h',100)
+                    intlist=[]
+                    for byteval in bytelist:
+                        intval=ord(byteval)
+                        intlist.append(intval)
+                    bus.write_block_data(addr, 0,intlist)
         print(time.time() - start_time)
         time.sleep(1)
     cap.release()
