@@ -133,7 +133,6 @@ def start(args):
                         bus.write_block_data(addr, 1,intlistl)
         print(time.time() - start_time)
         #time.sleep(1)
-    def 
     cap.release()
     # frame = cv2.imread('test.jpeg')
     # gray, tvecs = get_aruco(frame)
