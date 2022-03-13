@@ -34,3 +34,4 @@ while(1):
      print(parse_data(8, 100, 2))
      print ("101:\n")
      print(parse_data(8, 101, 2))
+     time.sleep(1)
