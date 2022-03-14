@@ -8,6 +8,7 @@ def parse_data(address, register, num_bytes):
         Parse multiple bytes long message by using I2C
         """
         try:
+            bus.write_byte(address,register)
             read_block = bus.read_i2c_block_data(address, register, num_bytes)
         except IOError:
             print("IOerr")
